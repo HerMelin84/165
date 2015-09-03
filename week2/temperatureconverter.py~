@@ -1,6 +1,0 @@
-from sys import argv
-
-def converter():
-    print argv[0]
-
-    
