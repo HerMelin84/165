@@ -17,9 +17,9 @@ class SimpleString():
         self.string = raw_input("Enter String value: ")
     def printString(self):
         """
-        Prints the string value
+        Prints the string value in upper case
         """
         if(self.string!= ''):
-            print self.string
+            print self.string.upper()
         else:
             print "You have not given it a value yet!"
