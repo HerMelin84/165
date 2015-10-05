@@ -1,4 +1,0 @@
-Kommunenummer	Stadnamn	Prioritet	Stadtype nynorsk	Stadtype bokmÃ¥l	Stadtype engelsk	Kommune	Fylke	Lat	Lon	HÃ¸gd	Nynorsk	BokmÃ¥l	Engelsk	
-101	Asak kirke	55	Kyrkje	Kirke	Church	Halden	Ã˜stfold	59.14465	11.45458		http://www.yr.no/stad/Noreg/Ã˜stfold/Halden/Asak_kirke/varsel.xml	http://www.yr.no/sted/Norge/Ã˜stfold/Halden/Asak_kirke/varsel.xml	http://www.yr.no/place/Norway/Ã˜stfold/Halden/Asak_kirkeforecast.xml
-101	Berg kirke	36	Kyrkje	Kirke	Church	Halden	Ã˜stfold	59.13783	11.32945		http://www.yr.no/stad/Noreg/Ã˜stfold/Halden/Berg_kirke/varsel.xml	http://www.yr.no/sted/Norge/Ã˜stfold/Halden/Berg_kirke/varsel.xml	http://www.yr.no/place/Norway/Ã˜stfold/Halden/Berg_kirke/forecast.xml
-101	Brekke	56	Sluse	Sluse	Lock	Halden	Ã˜stfold	59.14785	11.55603		http://www.yr.no/stad/Noreg/Ã˜stfold/Halden/Brekke~35224/varsel.xml	http://www.yr.no/sted/Norge/Ã˜stfold/Halden/Brekke~35224/varsel.xml	http://www.yr.no/place/Norway/Ã˜stfold/Halden/Brekke~35224/forecast.xml

@@ -22,6 +22,8 @@ def get_html(link,location):
     Keyword arguments:
     link -- the link to the file to be retrieved.
     location(string) - the location(place in the world) which is given in weather_update() 
+    
+    Returns text as unicode. 
     """
 
     try:
