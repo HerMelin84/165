@@ -1,0 +1,99 @@
+\documentclass[a4paper]{article}
+
+% Import some useful packages
+\usepackage[margin=0.5in]{geometry} % narrow margins
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
+
+\title{Peer-review of assignment 5 for \textit{INF3331-ThomasFossoy}}
+\author{Kjell Olav Dale, Git-repo INF3331-Kjell, {kodale@ulrik.uio.no} \\
+ 		Alex Luo, Git-repo INF3331-Alex, {alexlu@ulrik.uio.no}}
+\date{Deadline: Tuesday, 10. November 2015, 23:59:59.}
+
+\begin{document}
+\maketitle
+
+\section{Review}\label{sec:review}
+Mac OSX 10.11.1\\Python version 2.7.10
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.1:  Python implementation of the heat equation}
+\begin{itemize}
+\item You perform a shallow copy of the array. Replace\\\begin{minted}[bgcolor=LightGray,  fontsize=\footnotesize]{python}
+u=u_new
+\end{minted}
+with\\\begin{minted}[bgcolor=LightGray,  fontsize=\footnotesize]{python}
+u = [x[:] for x in u_new]
+\end{minted}
+\item You start your iteration at \textbf{i = 0} and \textbf{j = 0}, you are supposed to start at \textbf{i = 1} and \textbf{j = 1}.
+\item These two errors gives you elevated results. Iterating from \textbf{i = 1} and \textbf{j = 1} lowers your results \textbf{10} degrees from \textbf{283} to \textbf{273} and doing the proper copy of u\_new to u lowers it the last degree to the correct \textbf{272}. These changes makes your solution pass the test with an error of \textbf{0.0011666}.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.2: NumPy and C implementations} \label{sec:assignment5.2}
+\subsubsection*{Numpy} \label{sec:Numpy}
+\begin{itemize}
+\item The start of your equation\\\begin{minted}[bgcolor=LightGray,  fontsize=\footnotesize]{python}
+u[1:-1,1:-1]=u_new[1:-1,1:-1]= u[1:-1,1:-1]
+\end{minted} 
+is a bit weird and seems unnecessary, but it does not influence the result, which is correct.
+\end{itemize}
+\subsubsection*{Weave} \label{sec:Weave}
+\begin{itemize}\item Weave imported incorrectly, the proper import would be \\\begin{minted}[bgcolor=LightGray,  fontsize=\footnotesize]{python}
+from scipy import weave
+\end{minted} 
+\item You again start your iterations at \textbf{i = 1} and \textbf{j = 1}(see Pure Python review). You also end your iterations at a hardcoded \textbf{50} and \textbf{100}. This means your implementations will not work for any other rectangle size. In addition the values are wrong as they should be \textbf{m-1} and \textbf{n-1}, in the case of a 50x100 rectangle 49 and 99.
+\item Making these changes produces the correct result for your weave implementation.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.3: Testing}\label{sec:assignment5.3}
+\begin{itemize}
+\item The tests work as expected. However you have implemented the tests in every single solver file. It would be easier if you implemented the tests in a single file where you calculate \textbf{analytic\_u} and \textbf{f}, and then used your other implementations to calculate \textbf{u}.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.4:  Develop a user interface}\label{sec:assignment5.4}
+\begin{itemize}
+\item The UI does not save to file as specified in the assignment unless told to do so. 
+\item Aside from that the UI works as expected.
+\end{itemize} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.5: Latex report}
+\begin{itemize}
+\item Describes the work done adequately.
+\item The report is missing runtime comparisons and explanation of the differences between the solutions.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.7: Github activity plot}
+\begin{itemize}
+\item Successfully identifies directory as a git directory or not.
+\item Regex successfully retrives the different authors and dates from the log data.
+\item The plot did not show for me at first. I changed \textbf{plt.legend()} to \textbf{plt.show()} and it appeared. If it showed for you with legend() it might be a difference in our locales
+\item Plot is difficult to read, but I guess it shows what it's supposed to.
+\end{itemize}
+\subsection{General notes}\label{sec:notes}
+\begin{itemize}
+\item Docstrings are mostly missing, but are present on the solver functions. The ui file is well documented, but the rest are missing a lot of comments that would have been useful in understanding your thinking.
+\item You have some redundant imports and also some imports who are done incorrectly.
+\item A lot of your code is oddly placed and repeated unnecessarily, for example the test code, analytic\_u, and f calculations in every solution file. This makes the code difficult to read and follow.
+\end{itemize}
+Recommendations:
+\begin{itemize}
+\item Read the assignment text more thoroughly. Some of your errors could have been avoided if you had interpreted the assignment correctly.
+\item You should also try to structure your code better, avoiding unnecessary functions and repeating code.
+\end{itemize}
+\bibliographystyle{plain}
+\bibliography{literature}
+
+\end{document}
+
