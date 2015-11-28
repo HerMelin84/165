@@ -1,0 +1,22 @@
+<!-- ./templates/post.html -->
+<!doctype html>
+<title>Mypython web interface</title>
+<body style="background-color:lightgrey">
+  <h3 style="color:black" >History</h3><br>
+  <ul class=buffer>
+    {% for entry in buffer %}
+    <p2>{{ entry }}</p2><br>
+      {% else %}
+    <em>Unbelievable.  No entries here so far</em>
+      {% endfor %}
+      </ul>
+  <br>    
+</body>
+ <footer>
+   <form action="/handle_input" method='POST'>
+      Input command:<br>
+      <input type="text" name="input">
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+</footer> 
